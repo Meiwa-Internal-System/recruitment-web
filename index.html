@@ -18,7 +18,7 @@
           },
           keyframes: {
             fadeInUp: {
-              '20%': { opacity: '0', transform: 'translateY(30px)' },
+              '20%': { opacity: '0', transform: 'translateY(10px)' },
               '100%': { opacity: '1', transform: 'translateY(0)' },
             },
           },
@@ -30,7 +30,7 @@
   <style>
     .scroll-fade-in {
       opacity: 0%;
-      transform: translateY(50px);
+      transform: translateY(20px);
     }
   </style>
 </head>
@@ -40,29 +40,31 @@
     <!-- Header -->
     <div class="flex flex-col gap-8 lg:gap-12 md:gap- bg-[#005794]">
       <div class="hero-section flex flex-col gap-8 lg:gap-14 md:gap-12">
-        <div class="flex justify-between p-6 bg-[#005794] fixed top-0 w-full sm:max-w-[400px]  md:max-w-[500px] md:mx-auto lg:max-w-[550px] z-10 shadow-[0_20px_8px_-10px_rgba(0,0,0,0.2)]">
-          <img class="" src="./public/assets/header/navbar-1.svg" alt="navbar-image" />
-          <a href="https://page.line.me/974ssyie?openQrModal=true">
-            <img class="" src="./public/assets/header/navbar-2.svg" alt="navbar-image" />
-          </a>
-        </div>
-
-        <div class="flex flex-col gap-[-24px] scroll-fade-in transition-all duration-700 ease-out">
-          <img src="./public/assets/header/hero.png" alt="header-image" class="w-full" />
-          <img class="-mt-6 md:-mt-8 px-8" src="./public/assets/header/hero-text.svg" alt="header-image" class="w-full" />
+        <div class="stack min-h-[500px] md:min-h-[600px] lg:min-h-[650px] relative">
+          <div class="flex justify-between p-6 bg-[#005794] fixed top-0 w-full sm:max-w-[400px]  md:max-w-[500px] md:mx-auto lg:max-w-[550px] z-10 shadow-[0_20px_8px_-10px_rgba(0,0,0,0.2)]">
+            <img loading="eager" class="w-11/12 md:w-[80%] lg:w-[90%]" src="./public/assets/header/navbar-1.svg" alt="navbar-image" />
+            <a href="https://page.line.me/974ssyie?openQrModal=true">
+              <img loading="eager"class="" src="./public/assets/header/navbar-2.svg" alt="navbar-image" />
+            </a>
+          </div>
+  
+          <div class="flex flex-col gap-[-24px] scroll-fade-in transition-all duration-700 ease-out">
+            <img loading="eager"src="./public/assets/header/hero.png" alt="header-image" class="w-full" />
+            <img loading="eager"class="-mt-6 md:-mt-8 px-8" src="./public/assets/header/hero-text.svg" alt="header-image" class="w-full" />
+          </div>
         </div>
 
         <a class="w-full transition-transform duration-300 hover:scale-105" target="_blank" href="https://page.line.me/974ssyie?openQrModal=true">
-          <img src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
+          <img loading="eager"src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
         </a>
       </div>
 
       <div class="stability-cta flex flex-col gap-8 lg:gap-42 md:gap-22">
         
-          <img class="px-8 py-4 scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/header/body.svg" alt="header-image" class="w-full" /> 
+          <img loading="eager" class="stack min-h-[400px] md:min-h-[600px] lg:min-h-[650px] relative px-8 py-4 scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/header/body.svg" alt="header-image" class="w-full" /> 
 
         <a class="w-full transition-transform duration-300 hover:scale-105" target="_blank" href="https://page.line.me/974ssyie?openQrModal=true">
-          <img src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
+          <img loading="eager"src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
         </a>
       </div>
     </div>
@@ -70,26 +72,26 @@
     <!-- Company Values -->
     <div class="company-values flex flex-col gap-6 lg:gap-14 md:gap-12">
     
-        <img class="scroll-fade-in transition-all duration-700 ease-out px-8" src="./public/assets/company-values/stability-cta.svg" alt="stability-cta-image" />
+        <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out px-8" src="./public/assets/company-values/stability-cta.svg" alt="stability-cta-image" />
      
 
       <div class="bg-[#005794] flex flex-col gap-6 lg:gap-14 md:gap-12 py-8">
       
         <div class="card-groups flex flex-col gap-6 lg:gap-10 md:gap-12 px-8">
-            <img class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-title.svg" alt="about-title-image" />
-            <img class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-1.svg" alt="about-1-image">
-            <img class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-2.svg" alt="about-2-image">
+            <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-title.svg" alt="about-title-image" />
+            <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-1.svg" alt="about-1-image">
+            <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-2.svg" alt="about-2-image">
             <div class="card-3 flex flex-col gap-4 p-8 bg-white scroll-fade-in transition-all duration-700 ease-out">
-              <img src="./public/assets/company-values/about-3.svg" alt="about-3-image">
-              <img src="./public/assets/company-values/about-3-image.png" alt="about-3-image">
+              <img loading="eager"src="./public/assets/company-values/about-3.svg" alt="about-3-image">
+              <img loading="eager"src="./public/assets/company-values/about-3-image.png" alt="about-3-image">
             </div>
-            <img class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-4.svg" alt="about-4-image">
-            <img class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-footer.svg" alt="about-footer-image">
+            <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-4.svg" alt="about-4-image">
+            <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/company-values/about-footer.svg" alt="about-footer-image">
           </div>
    
 
         <a class="w-full transition-transform duration-300 hover:scale-105" target="_blank" href="https://page.line.me/974ssyie?openQrModal=true">
-          <img src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
+          <img loading="eager"src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
         </a>
       </div>
     </div>
@@ -98,12 +100,12 @@
     <div class="company-values flex flex-col gap-6 lg:gap-10 md:gap-8">
       <div class="flex flex-col gap-6 lg:gap-10 md:gap-8 p-4">
 
-        <img class="scroll-fade-in transition-all duration-700 ease-out px-14" src="./public/assets/schedule/schedule-title.svg" alt="schedule-title-image" />
-        <img class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/schedule/schedule-image.png" alt="schedule-image" />
-        <img class="scroll-fade-in transition-all duration-700 ease-out px-10" src="./public/assets/schedule/schedule-footer.svg" alt="schedule-footer-image" />
+        <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out px-14" src="./public/assets/schedule/schedule-title.svg" alt="schedule-title-image" />
+        <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/schedule/schedule-image.png" alt="schedule-image" />
+        <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out px-10" src="./public/assets/schedule/schedule-footer.svg" alt="schedule-footer-image" />
       </div>
       <a class="w-full transition-transform duration-300 hover:scale-105" target="_blank" href="https://page.line.me/974ssyie?openQrModal=true">
-        <img src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
+        <img loading="eager"src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
       </a>
     </div>
 
@@ -111,32 +113,32 @@
     <div class="flex flex-col gap-8 lg:gap-14 md:gap-12 bg-[#005794] py-6">
      
       <div class="flex flex-col gap-4 lg:gap-8 md:gap-6">
-        <img  class="w-[180px] md:w-[40%] lg:w-[50%] scroll-fade-in transition-all duration-700 ease-out pl-4 md:pl-6 lg:pl-8" src="./public/assets/review/title-review.svg" alt="title-review-image" />
-        <img class="mr-8 md:mr-12 lg:mr-16 sm:w-64 md:w-[80%] lg:w-[90%] scroll-fade-in transition-all duration-700 ease-out " src="./public/assets/review/title-review-image.png" alt="title-review-image" />
+        <img loading="eager" class="w-[180px] md:w-[40%] lg:w-[50%] scroll-fade-in transition-all duration-700 ease-out pl-4 md:pl-6 lg:pl-8" src="./public/assets/review/title-review.svg" alt="title-review-image" />
+        <img loading="eager"class="mr-8 md:mr-12 lg:mr-16 sm:w-64 md:w-[80%] lg:w-[90%] scroll-fade-in transition-all duration-700 ease-out " src="./public/assets/review/title-review-image.png" alt="title-review-image" />
       </div>
     
-      <img class="px-4 scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/review/review-dialog.svg" alt="review-dialog-image" />
+      <img loading="eager"class="px-4 scroll-fade-in transition-all duration-700 ease-out" src="./public/assets/review/review-dialog.svg" alt="review-dialog-image" />
     </div>
 
     <!-- Sacyou Message -->
     <div class="flex flex-col gap-8 lg:gap-14 md:gap-12">
-      <img class="scroll-fade-in transition-all duration-700 ease-out w-full px-6 md:w-[80%] lg:w-[90%] mr-auto" src="./public/assets/message/sacyou-message.svg" alt="scayou-message-image" />
+      <img loading="eager"class="scroll-fade-in transition-all duration-700 ease-out w-full px-6 md:w-[80%] lg:w-[90%] mr-auto" src="./public/assets/message/sacyou-message.svg" alt="scayou-message-image" />
 
       <div class="flex flex-col gap-10"> 
         <div class="flex flex-col items-start gap-4 scroll-fade-in transition-all duration-700 ease-out">
-          <img class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] mr-auto" src="./public/assets/message/card-message-image-1.png" alt="card-message-image-1" />
-          <img class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] mr-auto pl-3" src="./public/assets/message/card-message-1.svg" alt="card-message-1" />
+          <img loading="eager"class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] mr-auto" src="./public/assets/message/card-message-image-1.png" alt="card-message-image-1" />
+          <img loading="eager"class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] mr-auto pl-3" src="./public/assets/message/card-message-1.svg" alt="card-message-1" />
         </div>
         
         <div class="flex flex-col items-end gap-4 scroll-fade-in transition-all duration-700 ease-out">
-          <img class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] ml-auto" src="./public/assets/message/card-message-image-2.png" alt="card-message-image-2" />
-          <img class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] ml-auto pr-3" src="./public/assets/message/card-message-2.svg" alt="card-message-2" />
+          <img loading="eager"class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] ml-auto" src="./public/assets/message/card-message-image-2.png" alt="card-message-image-2" />
+          <img loading="eager"class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] ml-auto pr-3" src="./public/assets/message/card-message-2.svg" alt="card-message-2" />
         </div>
         
 
         <div class="flex flex-col items-start gap-4 scroll-fade-in transition-all duration-700 ease-out">
-          <img class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] mr-auto" src="./public/assets/message/card-message-image-3.png" alt="card-message-image-3" />
-          <img class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] mr-auto pl-3" src="./public/assets/message/card-message-3.svg" alt="card-message-3" />
+          <img loading="eager"class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] mr-auto" src="./public/assets/message/card-message-image-3.png" alt="card-message-image-3" />
+          <img loading="eager"class="w-11/12 sm:w-11/12 md:w-[80%] lg:w-[90%] mr-auto pl-3" src="./public/assets/message/card-message-3.svg" alt="card-message-3" />
         </div>
 
       </div>
@@ -148,10 +150,10 @@
     <!-- Footer -->
     <div class="flex flex-col bg-[#005794]">
       <a class="w-full transition-transform duration-300 hover:scale-105" target="_blank" href="https://page.line.me/974ssyie?openQrModal=true">
-        <img src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
+        <img loading="eager"src="./public/assets/line-image.svg" alt="line-image" class="w-full" />
       </a>
 
-      <img src="./public/assets/footer/footer.svg" alt="footer-image" />
+      <img loading="eager"src="./public/assets/footer/footer.svg" alt="footer-image" />
     </div>
   </div>
 
@@ -163,7 +165,7 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.remove("opacity-0", "translate-y-8");
+            entry.target.classList.remove("opacity-0", "translate-y-4");
             entry.target.classList.add("opacity-100", "translate-y-0");
           }
         });
