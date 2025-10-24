@@ -22,11 +22,6 @@
 
     <!-- Tailwind CDN with Custom Animation Config -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
     <script>
       tailwind.config = {
         theme: {
@@ -212,135 +207,223 @@
         </div>
       </div>
 
-      <!-- Form -->
-      <div class="w-full bg-sky-50 p-6 sm:p-8 rounded-2xl max-w-md mx-auto">
-        <h2 class="font-semibold text-3xl text-center text-[#005794]">
-          応募フォーム
-        </h2>
-        <form id="contact-form" class="w-full space-y-5">
+      <div class="bg-sky-50 p-6 sm:p-8 rounded-2xl max-w-md mx-auto">
+        <form class="w-full space-y-5">
           <div>
             <label
               for="name"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              お名前
+              Name
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
-              placeholder="氏名を入力"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200"
+              placeholder="Nama Lengkap Kamu"
               required />
           </div>
+
           <div>
             <label
               for="email"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              メールアドレス
+              Email
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
-              placeholder="メールアドレスを入力"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200"
+              placeholder="email@kamu.com"
               required />
           </div>
+
           <div>
             <label
               for="phone"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              電話番号
+              No. Telepon
             </label>
             <input
               type="tel"
               id="phone"
               name="phone"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
-              placeholder="例：080-1234-5678"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200"
+              placeholder="080-xxxx-xxxx"
               required />
           </div>
+
           <div>
             <label
               for="age"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              年齢
+              Umur
             </label>
             <input
               type="number"
               id="age"
               name="age"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
-              placeholder="例：25"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200"
+              placeholder="20"
               required />
           </div>
+
           <div>
             <label
               for="prefecture"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              都道府県
+              都道府県 (Prefecture)
             </label>
             <select
               id="prefecture"
               name="prefecture"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 cursor-pointer text-gray-400"
-              required>
-              <option value="" class="py-64 text-base">
-                都道府県を選択してください
-              </option>
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 cursor-pointer">
+              <option value="">読み込み中... (Loading...)</option>
             </select>
           </div>
 
-          <button
-            type="submit"
-            id="submit-button"
-            class="w-full transition-transform duration-300 hover:scale-105 flex justify-center sm:pt-8 pt-4">
+          <div class="flex items-center gap-3 pt-2">
+            <input
+              id="terms"
+              type="checkbox"
+              value=""
+              class="w-6 h-6 border-2 border-gray-300 rounded-md appearance-none checked:bg-blue-600 checked:border-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-400 cursor-pointer"
+              required />
+            <label
+              for="terms"
+              class="text-sm font-medium text-gray-700 cursor-pointer">
+              Saya setuju dengan
+              <a href="#" class="text-blue-700 font-bold hover:underline">
+                syarat & ketentuan
+              </a>
+            </label>
+          </div>
+
+          <a
+            class="w-full transition-transform duration-300 hover:scale-105 flex justify-center sm:mt-8 mt-4"
+            target="_blank"
+            href="https://line.me/ti/p/%40974ssyie">
             <img
               loading="eager"
               src="./public/assets/button-form.svg"
-              alt="送信する"
+              alt="line-image"
               class="w-full" />
-          </button>
+          </a>
+          <!-- <button
+            type="submit"
+            class="w-full text-white bg-blue-600 font-bold text-lg p-4 rounded-xl border-b-4 border-blue-800 hover:bg-blue-500 active:border-b-2 active:translate-y-0.5 transition-all duration-150 ease-in-out focus:outline-none focus:ring-4 focus:ring-blue-300">
+            最速で相談！
+          </button> -->
         </form>
       </div>
-
-      <!-- Modal -->
-      <div
-        id="success-modal"
-        class="fixed inset-0 flex items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0 pointer-events-none">
-        <div
-          id="modal-overlay"
-          class="absolute inset-0 bg-black bg-opacity-50"></div>
-
-        <div
-          id="modal-content"
-          class="w-full max-w-md flex flex-col p-6 relative items-center justify-center bg-[#005794] shadow-lg rounded-2xl transform transition-transform duration-300 ease-out scale-95">
-          <div class="">
-            <div class="text-center p-3 flex-auto justify-center">
-              <h2 class="text-3xl font-bold py-4 text-gray-200">
-                ありがとうございます！
-              </h2>
-            </div>
-            <div class="flex flex-col gap-4">
-              <a
-                class="w-full transition-transform duration-300 hover:scale-105 flex justify-center"
-                target="_blank"
-                href="https://line.me/ti/p/%40974ssyie">
-                <img
-                  loading="eager"
-                  src="./public/assets/line-image.svg"
-                  alt="line-image"
-                  class="w-full" />
-              </a>
-              <button
-                id="close-modal-button"
-                class="mb-2 md:mb-0 px-5 py-2 text-2xl text-white shadow-sm font-medium tracking-wider border-2 border-slate-400 hover:border-gray-700 rounded-full hover:shadow-lg hover:bg-gray-800 transition ease-in duration-300">
-                閉じる
-              </button>
-            </div>
-          </div>
+      <!-- Form -->
+      <form class="w-full max-w-[420px] mx-auto">
+        <!-- Email -->
+        <div class="mb-5">
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            >Your email</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 -700"
+            placeholder="name@flowbite.com"
+            required />
         </div>
-      </div>
+
+        <!-- name -->
+        <div class="mb-5">
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            >Your email</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 -700"
+            placeholder="name@flowbite.com"
+            required />
+        </div>
+
+        <!-- No Telp -->
+        <div class="mb-5">
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            >Your email</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 -700"
+            placeholder="name@flowbite.com"
+            required />
+        </div>
+
+        <!-- age -->
+        <div class="mb-5">
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            >Your email</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 -700"
+            placeholder="name@flowbite.com"
+            required />
+        </div>
+
+        <!-- adderess -->
+        <div class="mb-5">
+          <label
+            for="email"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            >Your email</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 -700"
+            placeholder="name@flowbite.com"
+            required />
+        </div>
+
+        <div class="flex items-start mb-5">
+          <div class="flex items-center h-5">
+            <input
+              id="terms"
+              type="checkbox"
+              value=""
+              class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300"
+              required />
+          </div>
+          <label
+            for="terms"
+            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >I agree with the
+            <a href="#" class="text-blue-600 hover:underline dark:text-blue-500"
+              >terms and conditions</a
+            ></label
+          >
+        </div>
+
+        <a
+          class="w-full transition-transform duration-300 hover:scale-105 flex justify-center sm:mt-8 mt-4"
+          target="_blank"
+          href="https://line.me/ti/p/%40974ssyie">
+          <img
+            loading="eager"
+            src="./public/assets/button-form.svg"
+            alt="line-image"
+            class="w-full" />
+        </a>
+      </form>
 
       <!-- Blog -->
       <div class="flex flex-col sm:my-12 mt-4 gap-6 lg:gap-10 md:gap-8 px-6">
@@ -451,98 +534,6 @@
         </div>
       </div>
 
-      <!-- Form -->
-      <div class="w-full bg-sky-50 p-6 sm:p-8 rounded-2xl max-w-md mx-auto">
-        <h2 class="font-semibold text-3xl text-center text-[#005794]">
-          応募フォーム
-        </h2>
-        <form id="contact-form" class="w-full space-y-5">
-          <div>
-            <label
-              for="name"
-              class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              お名前
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
-              placeholder="氏名を入力"
-              required />
-          </div>
-          <div>
-            <label
-              for="email"
-              class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              メールアドレス
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
-              placeholder="メールアドレスを入力"
-              required />
-          </div>
-          <div>
-            <label
-              for="phone"
-              class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              電話番号
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
-              placeholder="例：080-1234-5678"
-              required />
-          </div>
-          <div>
-            <label
-              for="age"
-              class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              年齢
-            </label>
-            <input
-              type="number"
-              id="age"
-              name="age"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
-              placeholder="例：25"
-              required />
-          </div>
-          <div>
-            <label
-              for="prefecture"
-              class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
-              都道府県
-            </label>
-            <select
-              id="prefecture"
-              name="prefecture"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 cursor-pointer text-gray-400"
-              required>
-              <option value="" class="py-64 text-base">
-                都道府県を選択してください
-              </option>
-            </select>
-          </div>
-
-          <button
-            type="submit"
-            id="submit-button"
-            class="w-full transition-transform duration-300 hover:scale-105 flex justify-center sm:pt-8 pt-4">
-            <img
-              loading="eager"
-              src="./public/assets/button-form.svg"
-              alt="送信する"
-              class="w-full" />
-          </button>
-        </form>
-      </div>
-
       <!-- Footer -->
       <div class="flex flex-col bg-[#005794]">
         <a
@@ -563,126 +554,50 @@
       </div>
     </div>
 
+    <!-- Scroll Animation Script -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Email js logic
-        const contactForm = document.getElementById("contact-form");
-        const successModal = document.getElementById("success-modal");
-        const modalContent = document.getElementById("modal-content");
-        const closeModalButton = document.getElementById("close-modal-button");
-        const modalOverlay = document.getElementById("modal-overlay");
-
-        function showModal() {
-          successModal.classList.remove("opacity-0", "pointer-events-none");
-          modalContent.classList.remove("scale-95");
-          modalContent.classList.add("scale-100");
-        }
-
-        function hideModal() {
-          successModal.classList.add("opacity-0", "pointer-events-none");
-          modalContent.classList.remove("scale-100");
-          modalContent.classList.add("scale-95");
-        }
-
-        emailjs.init({
-          publicKey: "MIEnvR-5Jmpqyt0TY",
-        });
-
-        contactForm.addEventListener("submit", function (event) {
-          event.preventDefault();
-          if (!this.checkValidity()) {
-            this.reportValidity();
-            return;
-          }
-          const submitButton = document.getElementById("submit-button");
-          const originalButtonContent = submitButton.innerHTML;
-          submitButton.disabled = true;
-          submitButton.innerHTML = `<span class="text-black font-bold">送信中...</span>`;
-          const serviceID = "service_hm4yvsv";
-          const templateID = "template_mhdu655";
-
-          emailjs.sendForm(serviceID, templateID, this).then(
-            () => {
-              showModal();
-              submitButton.disabled = false;
-              submitButton.innerHTML = originalButtonContent;
-              contactForm.reset();
-              document
-                .getElementById("prefecture")
-                .classList.add("text-gray-400");
-            },
-            (err) => {
-              alert("送信に失敗しました。\n" + JSON.stringify(err));
-              submitButton.disabled = false;
-              submitButton.innerHTML = originalButtonContent;
-            }
-          );
-        });
-
-        closeModalButton.addEventListener("click", hideModal);
-        modalOverlay.addEventListener("click", hideModal);
-
-        // Prefectures select
         const prefectureSelect = document.getElementById("prefecture");
+        const API_BASE_URL = "https://postcode-jp.com/api/v1";
 
-        prefectureSelect.addEventListener("change", () => {
-          if (prefectureSelect.value) {
-            prefectureSelect.classList.remove("text-gray-400");
-          } else {
-            prefectureSelect.classList.add("text-gray-400");
-          }
-        });
-
+        // Fungsi untuk mengisi dropdown
         function populateSelect(selectElement, items, defaultOptionText) {
           selectElement.innerHTML = `<option value="">${defaultOptionText}</option>`;
-          items.data.forEach((item) => {
+          items.forEach((item) => {
             const option = document.createElement("option");
-            option.value = item.pref;
-            option.textContent = item.pref;
+            option.value = item.prefecture;
+            option.textContent = item.prefecture;
             selectElement.appendChild(option);
           });
         }
 
+        // Memuat data prefektur saat halaman dibuka
         async function loadPrefectures() {
-          const cacheKey = "prefecturesCache";
-          const defaultOptionText = "都道府県を選択してください";
-          const cachedData = localStorage.getItem(cacheKey);
-
-          if (cachedData) {
-            const parsedCache = JSON.parse(cachedData);
-            if (new Date().getTime() < parsedCache.expiry) {
-              populateSelect(
-                prefectureSelect,
-                parsedCache.data,
-                defaultOptionText
-              );
-              return;
-            }
-          }
-
-          const proxyUrl = "https://corsproxy.io/?";
-          const apiUrl = "https://apis.postcode-jp.com/api/v6/prefectures/";
           try {
-            const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
-            if (!response.ok)
+            const response = await fetch(`${API_BASE_URL}/prefectures.json`);
+            if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const prefectures = await response.json();
-            const cachePayload = {
-              expiry: new Date().getTime() + 24 * 60 * 60 * 1000,
-              data: prefectures,
-            };
-            localStorage.setItem(cacheKey, JSON.stringify(cachePayload));
-            populateSelect(prefectureSelect, prefectures, defaultOptionText);
+            populateSelect(
+              prefectureSelect,
+              prefectures,
+              "都道府県を選択してください (Please select)"
+            );
           } catch (error) {
             console.error("Failed to load prefectures:", error);
             prefectureSelect.innerHTML =
-              '<option value="">データの読み込みに失敗しました</option>';
+              '<option value="">データの読み込みに失敗しました (Failed to load data)</option>';
           }
         }
-        loadPrefectures();
 
-        // Animation scroll
+        // Jalankan fungsi untuk memuat prefektur
+        loadPrefectures();
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
         const targets = document.querySelectorAll(".scroll-fade-in");
+
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -692,9 +607,14 @@
               }
             });
           },
-          { threshold: 0.1 }
+          {
+            threshold: 0.1,
+          }
         );
-        targets.forEach((target) => observer.observe(target));
+
+        targets.forEach((target) => {
+          observer.observe(target);
+        });
       });
     </script>
   </body>
