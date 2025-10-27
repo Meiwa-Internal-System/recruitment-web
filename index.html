@@ -20,13 +20,12 @@
 
     <link rel="icon" href="/public/assets/meiwa.svg" type="image/svg+xml" />
 
-    <!-- Tailwind CDN with Custom Animation Config -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css"
+      rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -49,6 +48,41 @@
       .scroll-fade-in {
         opacity: 0%;
         transform: translateY(20px);
+      }
+
+      .ts-control {
+        padding: 1rem;
+        background-color: rgb(249 250 251);
+        border-width: 2px;
+        border-color: rgb(209 213 219);
+        border-radius: 0.75rem;
+        font-weight: 600;
+        font-size: medium;
+      }
+
+      .ts-control.focus {
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 1px #005794 !important;
+      }
+
+      .ts-control > input::placeholder {
+        color: rgb(156 163 175);
+        font-size: medium;
+      }
+
+      .ts-dropdown {
+        border-radius: 0.75rem;
+        border-width: 2px;
+        border-color: rgb(209 213 219);
+        overflow: hidden;
+        font-size: medium;
+      }
+
+      .ts-dropdown .option {
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        font-size: medium;
       }
     </style>
   </head>
@@ -217,7 +251,11 @@
         <h2 class="font-semibold text-3xl text-center text-[#005794]">
           応募フォーム
         </h2>
-        <form id="contact-form" class="w-full space-y-5">
+        <form
+          id="contact-form"
+          class="w-full space-y-5"
+          method="POST"
+          action="send-email.php">
           <div>
             <label
               for="name"
@@ -228,7 +266,7 @@
               type="text"
               id="name"
               name="name"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-[#005794] transition-all duration-200 placeholder-gray-400"
               placeholder="氏名を入力"
               required />
           </div>
@@ -242,7 +280,7 @@
               type="email"
               id="email"
               name="email"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-[#005794] transition-all duration-200 placeholder-gray-400"
               placeholder="メールアドレスを入力"
               required />
           </div>
@@ -256,9 +294,13 @@
               type="tel"
               id="phone"
               name="phone"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-[#005794] transition-all duration-200 placeholder-gray-400"
               placeholder="例：080-1234-5678"
-              required />
+              required
+              pattern="[0-9]{10,15}"
+              minlength="10"
+              maxlength="15"
+              title="電話番号は10桁から15桁の半角数字で入力してください。" />
           </div>
           <div>
             <label
@@ -270,8 +312,11 @@
               type="number"
               id="age"
               name="age"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-[#005794] transition-all duration-200 placeholder-gray-400"
               placeholder="例：25"
+              min="18"
+              max="100"
+              title="年齢は18歳から100歳の間で入力してください。"
               required />
           </div>
           <div>
@@ -280,15 +325,12 @@
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
               都道府県
             </label>
+
             <select
               id="prefecture"
               name="prefecture"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 cursor-pointer text-gray-400"
-              required>
-              <option value="" class="py-64 text-base">
-                都道府県を選択してください
-              </option>
-            </select>
+              placeholder="都道府県を選択してください"
+              required></select>
           </div>
 
           <button
@@ -307,7 +349,7 @@
       <!-- Modal -->
       <div
         id="success-modal"
-        class="fixed inset-0 flex items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0 pointer-events-none">
+        class="fixed inset-0 flex items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0 pointer-events-none z-[9999]">
         <div
           id="modal-overlay"
           class="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -456,83 +498,90 @@
         <h2 class="font-semibold text-3xl text-center text-[#005794]">
           応募フォーム
         </h2>
-        <form id="contact-form" class="w-full space-y-5">
+        <form
+          id="contact-form-2"
+          class="w-full space-y-5"
+          method="POST"
+          action="send-email.php">
           <div>
             <label
-              for="name"
+              for="name-2"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
               お名前
             </label>
             <input
               type="text"
-              id="name"
+              id="name-2"
               name="name"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-[#005794] transition-all duration-200 placeholder-gray-400"
               placeholder="氏名を入力"
               required />
           </div>
           <div>
             <label
-              for="email"
+              for="email-2"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
               メールアドレス
             </label>
             <input
               type="email"
-              id="email"
+              id="email-2"
               name="email"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-[#005794] transition-all duration-200 placeholder-gray-400"
               placeholder="メールアドレスを入力"
               required />
           </div>
           <div>
             <label
-              for="phone"
+              for="phone-2"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
               電話番号
             </label>
             <input
               type="tel"
-              id="phone"
+              id="phone-2"
               name="phone"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-[#005794] transition-all duration-200 placeholder-gray-400"
               placeholder="例：080-1234-5678"
-              required />
+              required
+              pattern="[0-9]{10,15}"
+              minlength="10"
+              maxlength="15"
+              title="電話番号は10桁から15桁の半角数字で入力してください。" />
           </div>
           <div>
             <label
-              for="age"
+              for="age-2"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
               年齢
             </label>
             <input
               type="number"
-              id="age"
+              id="age-2"
               name="age"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 placeholder-gray-400"
+              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-[#005794] transition-all duration-200 placeholder-gray-400"
               placeholder="例：25"
+              min="18"
+              max="100"
+              title="年齢は18歳から100歳の間で入力してください。"
               required />
           </div>
           <div>
             <label
-              for="prefecture"
+              for="prefecture-2"
               class="text-gray-700 font-bold block mb-2 text-sm uppercase tracking-wide">
               都道府県
             </label>
             <select
-              id="prefecture"
+              id="prefecture-2"
               name="prefecture"
-              class="w-full p-3 bg-gray-50 border-2 border-gray-300 rounded-xl text-gray-800 font-semibold focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-300 transition-all duration-200 cursor-pointer text-gray-400"
-              required>
-              <option value="" class="py-64 text-base">
-                都道府県を選択してください
-              </option>
-            </select>
+              placeholder="都道府県を選択してください"
+              required></select>
           </div>
 
           <button
             type="submit"
-            id="submit-button"
+            id="submit-button-2"
             class="w-full transition-transform duration-300 hover:scale-105 flex justify-center sm:pt-8 pt-4">
             <img
               loading="eager"
@@ -565,14 +614,39 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Email js logic
-        const contactForm = document.getElementById("contact-form");
+        // Modal and prefecture select
         const successModal = document.getElementById("success-modal");
         const modalContent = document.getElementById("modal-content");
         const closeModalButton = document.getElementById("close-modal-button");
         const modalOverlay = document.getElementById("modal-overlay");
 
+        const prefectureSelects = document.querySelectorAll(
+          "select[name='prefecture']"
+        );
+        const tomSelectInstances = [];
+
+        prefectureSelects.forEach((selectElement) => {
+          const tomSelect = new TomSelect(selectElement, {
+            create: false,
+            maxOptions: 200,
+            render: {
+              option: function (data, escape) {
+                return "<div>" + escape(data.text) + "</div>";
+              },
+              item: function (data, escape) {
+                this.control.classList.remove("text-gray-400");
+                return "<div>" + escape(data.text) + "</div>";
+              },
+            },
+            onClear: function () {
+              this.control.classList.add("text-gray-400");
+            },
+          });
+          tomSelectInstances.push(tomSelect);
+        });
+
         function showModal() {
+          tomSelectInstances.forEach((instance) => instance.close());
           successModal.classList.remove("opacity-0", "pointer-events-none");
           modalContent.classList.remove("scale-95");
           modalContent.classList.add("scale-100");
@@ -584,104 +658,115 @@
           modalContent.classList.add("scale-95");
         }
 
-        emailjs.init({
-          publicKey: "MIEnvR-5Jmpqyt0TY",
-        });
-
-        contactForm.addEventListener("submit", function (event) {
-          event.preventDefault();
-          if (!this.checkValidity()) {
-            this.reportValidity();
-            return;
-          }
-          const submitButton = document.getElementById("submit-button");
-          const originalButtonContent = submitButton.innerHTML;
-          submitButton.disabled = true;
-          submitButton.innerHTML = `<span class="text-black font-bold">送信中...</span>`;
-          const serviceID = "service_hm4yvsv";
-          const templateID = "template_mhdu655";
-
-          emailjs.sendForm(serviceID, templateID, this).then(
-            () => {
-              showModal();
-              submitButton.disabled = false;
-              submitButton.innerHTML = originalButtonContent;
-              contactForm.reset();
-              document
-                .getElementById("prefecture")
-                .classList.add("text-gray-400");
-            },
-            (err) => {
-              alert("送信に失敗しました。\n" + JSON.stringify(err));
-              submitButton.disabled = false;
-              submitButton.innerHTML = originalButtonContent;
-            }
-          );
-        });
-
         closeModalButton.addEventListener("click", hideModal);
         modalOverlay.addEventListener("click", hideModal);
 
-        // Prefectures select
-        const prefectureSelect = document.getElementById("prefecture");
+        // Form logic
+        const contactForms = document.querySelectorAll(
+          "form[id^='contact-form']"
+        );
+        contactForms.forEach((form) => {
+          form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (!this.checkValidity()) {
+              this.reportValidity();
+              return;
+            }
 
-        prefectureSelect.addEventListener("change", () => {
-          if (prefectureSelect.value) {
-            prefectureSelect.classList.remove("text-gray-400");
-          } else {
-            prefectureSelect.classList.add("text-gray-400");
-          }
+            const submitButton = form.querySelector("button[type='submit']");
+            const originalButtonContent = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = `<span class="text-black font-bold">送信中...</span>`;
+
+            const formData = new FormData(this);
+            fetch("send-email.php", { method: "POST", body: formData })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.status === "success") {
+                  showModal();
+                  this.reset();
+                  const tomSelectInstance = this.querySelector(
+                    "select[name='prefecture']"
+                  ).tomselect;
+                  if (tomSelectInstance) {
+                    tomSelectInstance.clear();
+                    tomSelectInstance.control.classList.add("text-gray-400");
+                  }
+                } else {
+                  alert("送信に失敗しました。\n" + data.message);
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+                alert("技術的なエラーが発生しました。もう一度お試しください。");
+              })
+              .finally(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonContent;
+              });
+          });
         });
 
-        function populateSelect(selectElement, items, defaultOptionText) {
-          selectElement.innerHTML = `<option value="">${defaultOptionText}</option>`;
-          items.data.forEach((item) => {
-            const option = document.createElement("option");
-            option.value = item.pref;
-            option.textContent = item.pref;
-            selectElement.appendChild(option);
-          });
+        // Prefectures logic
+        function populateTomSelect(tomSelect, items) {
+          tomSelect.clear();
+          tomSelect.clearOptions();
+          const options = items.data.map((item) => ({
+            value: item.pref,
+            text: item.pref,
+          }));
+          tomSelect.addOptions(options);
         }
 
         async function loadPrefectures() {
           const cacheKey = "prefecturesCache";
           const defaultOptionText = "都道府県を選択してください";
-          const cachedData = localStorage.getItem(cacheKey);
+          let prefecturesData = null;
 
+          const cachedData = localStorage.getItem(cacheKey);
           if (cachedData) {
             const parsedCache = JSON.parse(cachedData);
             if (new Date().getTime() < parsedCache.expiry) {
-              populateSelect(
-                prefectureSelect,
-                parsedCache.data,
-                defaultOptionText
-              );
-              return;
+              prefecturesData = parsedCache.data;
             }
           }
-
-          const proxyUrl = "https://corsproxy.io/?";
-          const apiUrl = "https://apis.postcode-jp.com/api/v6/prefectures/";
-          try {
-            const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
-            if (!response.ok)
-              throw new Error(`HTTP error! status: ${response.status}`);
-            const prefectures = await response.json();
-            const cachePayload = {
-              expiry: new Date().getTime() + 24 * 60 * 60 * 1000,
-              data: prefectures,
-            };
-            localStorage.setItem(cacheKey, JSON.stringify(cachePayload));
-            populateSelect(prefectureSelect, prefectures, defaultOptionText);
-          } catch (error) {
-            console.error("Failed to load prefectures:", error);
-            prefectureSelect.innerHTML =
-              '<option value="">データの読み込みに失敗しました</option>';
+          if (!prefecturesData) {
+            try {
+              const proxyUrl = "https://corsproxy.io/?";
+              const apiUrl = "https://apis.postcode-jp.com/api/v6/prefectures/";
+              const response = await fetch(
+                proxyUrl + encodeURIComponent(apiUrl)
+              );
+              if (!response.ok)
+                throw new Error(`HTTP error! status: ${response.status}`);
+              prefecturesData = await response.json();
+              const cachePayload = {
+                expiry: new Date().getTime() + 24 * 60 * 60 * 1000,
+                data: prefecturesData,
+              };
+              localStorage.setItem(cacheKey, JSON.stringify(cachePayload));
+            } catch (error) {
+              console.error("Failed to load prefectures:", error);
+            }
+          }
+          if (prefecturesData) {
+            tomSelectInstances.forEach((instance) => {
+              populateTomSelect(instance, prefecturesData, defaultOptionText);
+            });
+          } else {
+            tomSelectInstances.forEach((instance) => {
+              instance.clear();
+              instance.addOption({
+                value: "",
+                text: "データの読み込みに失敗しました",
+              });
+              instance.disable();
+            });
           }
         }
         loadPrefectures();
 
-        // Animation scroll
+        // Animation logic
         const targets = document.querySelectorAll(".scroll-fade-in");
         const observer = new IntersectionObserver(
           (entries) => {
