@@ -22,13 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com'; 
         $mail->SMTPAuth   = true;
-        $mail->Username   = ''; // Sender email 
+        $mail->Username   = ' info@meiwa-industry.co.jp'; // Sender email 
         $mail->Password   = ''; // Apps code / App pass 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
 
-        $mail->setFrom('', ''); // Sender email and name 
-        $mail->addAddress(''); // Receiver email 
+        $mail->setFrom('info@meiwa-industry.co.jp', 'Web Recruitement'); // Sender email and name 
+        $mail->addAddress('soumu@meiwa-industry.co.jp'); // Receiver email 
         $mail->addReplyTo($email, $name); 
 
         $mail->isHTML(false);
